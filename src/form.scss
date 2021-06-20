@@ -10,22 +10,34 @@ main {
     margin: 15px;
     padding: 10px;
 }
+#get:active , #post:active , #delete:active , #put:active {
+    background-color: white;
+  
+    outline: none;
+}
 input[type="text"]{
     width: 250px;
+}
+input[type="text"]:focus{
+    outline: none;
+    
 }
 input[type="submit"]{
     width: 75px;
     margin-left: 10px;
 }
+
 label {
     margin-right: 10px;
 }
-main div {
+main {
+    
+    div {
     background-color:#ededed ;
     color:#282c34 ;
     text-align: left;
     min-height: 35vh;
     border: #d9d9d9 solid 2px;
     padding: 30px;
-
+    }
 }
