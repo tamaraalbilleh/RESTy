@@ -18,32 +18,53 @@ class App extends React.Component {
       method : '',
       URL : '',
       body : {},
+      flag : false,
     }
     this.handleForm = this.handleForm.bind(this);
     this.handleHistory = this.handleHistory.bind (this);
   }
 
 
-  handleForm (results,count, header , array){
-    this.setState({ results, count  , header , array});
-
+  handleForm (results,count, header , array , flag){
+    this.setState({ results, count  , header , array ,flag});
   }
 
-  handleHistory(meth, ur ,bod){
-    // let array = this.state.array;
-    this.setState ({method : meth, URL : ur, body:bod})
-    
+  handleHistory(array, flag ){
+    this.setState ({...this.state, array : array, flag : flag })
   };
+  afterSubmit = (method, URL , body)=>{
+    console.log ('inside afterSubmit', this.state.URL)
+    this.setState ({method , URL , body})
+    
+  }
+
+  componentDidMount = ()=>{
+
+    let array = []
+      let oldResult =JSON.parse(localStorage.getItem('request'))
+      if (oldResult){
+        Object.values(oldResult).map((item) => {
+          if (!array.includes (item)){
+            array.push (item)
+          }
+        });
+      }
+    this.setState({array})
+
+  }
 
   render(){
     return(
       <React.Fragment>
       <Header/>
       <main>
-      <History historyHandler={this.handleHistory} arr={this.state.array} />
-      <Form handler={this.handleForm}  meth= {this.state.method} ur={this.state.URL}  bod={this.state.body}/> 
+      <History historyHandler={this.handleHistory} after={this.afterSubmit}   arr={this.state.array} flag={this.state.flag} />
+      <Form handler={this.handleForm}  meth= {this.state.method} ur={this.state.URL}  bod={this.state.body} fl={this.state.flag}/> 
       <Result results = {this.state.results} count={this.state.count} header={this.state.header}/>
       </main>
+      {  
+      console.log ('state',this.state)
+    }
       <Footer/>
       </React.Fragment>
     )

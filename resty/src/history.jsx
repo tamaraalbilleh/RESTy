@@ -1,58 +1,76 @@
 import React from 'react';
-import If from './if';
-import Else from './else';
 class History extends React.Component {
     constructor (props){
         super (props)
-        this.state = {
-            array2 : [],
-            flag : false
-        }
         this.hisClickHandler =this.hisClickHandler.bind(this);
-        // this.hisClickHandler2 = this.hisClickHandler2.bind (this)
+ 
     }
 
     hisClickHandler = e =>{
-        
-        let meth = e.target.method.value;
-        let ur = e.target.url.value;
-        let bod = e.target.body.value;
-        this.props.historyHandler(meth, ur ,bod);
-        this.setState({flag : !this.state.flag})
+        e.preventDefault ()
+        let array2 = []
+        let oldResult =JSON.parse(localStorage.getItem('request'))
+        if (oldResult){
+            Object.values(oldResult).map((item) => {
+                if (!array2.includes (item)){
+                    array2.push (item)
+                }
+            });
+            let meth = e.target.method.value;
+            let ur = e.target.url.value;
+            let bod = e.target.body.value;
+            
+            // this.props.historyHandler(meth, ur ,bod );
+            this.props.after (meth,ur,bod)
 
-          
-          }
+    };
+}
+
+
+
+
+
       
       render (){
           return (
             <React.Fragment>
         
               <ul>
-                 {
+                 {  
                      this.props.arr.map(item=>{
                       let str = item.split(',')
                       let method = str[0];
                       let url = str[1];
-                      let body = str[2] 
-                      console.log ('this is true')
+                      let body;
+                      if (str[2]){
+
+                       body = str[2] 
+                      }
+                      if (str.length > 3){
+                          for (let i = 3; i < str.length ; i ++){
+                              body = body + str[i]
+                          }
+                      }
                       return (
-                          <form onSubmit={this.hisClickHandler }>
+                          <React.Fragment>
+                          
+                          <form onSubmit={this.hisClickHandler}>
                           <input type="hidden" value={str[0]} name="method"/>
                           <input type="hidden" value={str[1]} name="url"/>
-                          <input type="hidden" value={str[2]} name="body"/>
+                          <input type="hidden" value={str[2] + str[3]} name="body"/>
                           <li><button type='submit'>{method}</button>   {url} , body is {body}</li>
                           </form>
+                         
+                       
+                      
+                          </React.Fragment>
+
                       )
                      })
-  
+                     
                   }
               </ul>
-              
-
             
-        <Else condition={this.state.flag}>
-         <p>hi</p>
-        </Else>
         </React.Fragment>
                    
          )          
