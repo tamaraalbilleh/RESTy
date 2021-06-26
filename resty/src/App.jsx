@@ -33,7 +33,7 @@ class App extends React.Component {
     this.setState ({...this.state, array : array, flag : flag })
   };
   afterSubmit = (method, URL , body)=>{
-    console.log ('inside afterSubmit', this.state.URL)
+    // console.log ('inside afterSubmit', this.state.URL)
     this.setState ({method , URL , body})
     
   }
@@ -62,9 +62,7 @@ class App extends React.Component {
       <Form handler={this.handleForm}  meth= {this.state.method} ur={this.state.URL}  bod={this.state.body} fl={this.state.flag}/> 
       <Result results = {this.state.results} count={this.state.count} header={this.state.header}/>
       </main>
-      {  
-      console.log ('state',this.state)
-    }
+  
       <Footer/>
       </React.Fragment>
     )
