@@ -62,7 +62,6 @@ class App extends React.Component {
       <Form handler={this.handleForm}  meth= {this.state.method} ur={this.state.URL}  bod={this.state.body} fl={this.state.flag}/> 
       <Result results = {this.state.results} count={this.state.count} header={this.state.header}/>
       </main>
-  
       <Footer/>
       </React.Fragment>
     )
