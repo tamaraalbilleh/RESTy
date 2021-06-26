@@ -7,9 +7,9 @@ class Result extends React.Component {
         return (
             <React.Fragment>
                 <div id="results"> results for your search : 
-                    <p>Headers : <JSONPretty id="json-pretty" data= {this.props.header}></JSONPretty></p>
+                    <p>Headers :</p> <JSONPretty id="json-pretty" data= {this.props.header}></JSONPretty>
                     <p>count is {this.props.count}</p>
-                    <p>Results : <JSONPretty id="json-pretty" data={this.props.results}></JSONPretty> </p>
+                    <p>Results : </p><JSONPretty id="json-pretty" data={this.props.results}></JSONPretty> 
                 </div>
             </React.Fragment>
         )

@@ -66,7 +66,7 @@ class Form extends React.Component{
             let oldResult =JSON.parse(localStorage.getItem('request'))
             if (oldResult){
                 // console.log ('these are old results' , oldResult)
-                Object.values(oldResult).map((item) => {
+                Object.values(oldResult).map((item) => { /// keys
                     if (!array.includes (item)){
                         array.push (item)
                     }
@@ -77,7 +77,7 @@ class Form extends React.Component{
                 array.push (str)
                 // array.filter((item, index) => array.indexOf(item) === index)
                     localStorage.setItem('request', JSON.stringify(array));
-                }
+            }
           
         }
         // console.log ('headers', header)

@@ -32,6 +32,7 @@ class App extends React.Component {
   handleHistory(meth, ur ,bod){
     // let array = this.state.array;
     this.setState ({method : meth, URL : ur, body:bod})
+    
   };
 
   render(){
