@@ -135,11 +135,6 @@ class Form extends React.Component{
             <form onSubmit={this.submitHandler}>
                 <label for="url-input">URL : </label>
                 <input id="inputs"  type="text" name="inputurl" onChange={this.handleInput} />
-                <div id='formd'>
-            
-                <h4>{this.props.meth || this.state.method}  :  {this.props.ur || this.state.section} </h4>
-                <input id="submit" type="submit" value="Go!"/><br/>
-                </div>
 
                 <IF condition={this.state.flag}>
                     <Loader></Loader>
@@ -149,8 +144,13 @@ class Form extends React.Component{
                 <button id="post" onClick={this.handleClick} value="POST">POST</button>
                 <button id="put" onClick={this.handleClick} value="PUT">PUT</button>
                 <button id="delete" onClick={this.handleClick} value="DELETE">DELETE</button>
-                <textarea rows="4" cols="50" id="textarea" name="body"  placeholder="please enter a json body"></textarea>
+                <textarea rows="4" cols="60" id="textarea" name="body"  placeholder="please enter a json body"></textarea>
+                <input id="submit" type="submit" value="Go!" className="go"/><br/>
+                {/* <div id='formd'>
+            
+                </div> */}
             </form>
+                <h4>{this.props.meth || this.state.method}  :  {this.props.ur || this.state.section} </h4>
            
             </React.Fragment>
         )
