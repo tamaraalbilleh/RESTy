@@ -9,3 +9,23 @@
     color: white;
   }
   
+.list {
+  list-style-type: none;
+  display: inline;
+  text-decoration: none;
+  margin:10px 30px;
+  padding: 10px;
+  margin-left: 0;
+}
+ul {
+  display: inline;
+  
+}
+a {
+  text-decoration: none;
+  color:  white;
+}
+
+a:active {
+  color: aquamarine;
+}
